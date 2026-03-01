@@ -1,123 +1,180 @@
-/* Base body */
-body {
-    font-family: 'Segoe UI', Roboto, sans-serif;
-    background-color: #121212;
-    color: #e0e0e0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
+:root {
+    --bg: #0b0b0f;
+    --panel: rgba(255, 255, 255, 0.06);
+    --panel-border: rgba(255, 255, 255, 0.08);
+    --text: #f5f5f7;
+    --muted: #9ca3af;
+    --button-bg: rgba(255, 255, 255, 0.1);
+    --button-bg-hover: rgba(255, 255, 255, 0.16);
+    --pill-bg: rgba(255, 255, 255, 0.08);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    --radius-xl: 24px;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
     margin: 0;
-    padding: 30px 20px;
+    padding: 40px 20px 60px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+      "Segoe UI", Roboto, sans-serif;
+    background:
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 35%),
+      linear-gradient(180deg, #111216 0%, #09090b 100%);
+    color: var(--text);
+    min-height: 100vh;
   }
   
-  /* Main heading */
   h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    color: #ffffff;
-    letter-spacing: 1px;
+    margin: 0 0 28px;
+    width: 100%;
+    max-width: 780px;
+    font-size: clamp(2.2rem, 6vw, 4.2rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    text-align: left;
   }
   
-  /* Container for habits */
   #habits-container {
     width: 100%;
-    max-width: 500px;
+    max-width: 780px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
   }
   
-  /* Individual habit card */
   .habit {
-    background-color: #1e1e1e;
-    padding: 20px 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    transition: transform 0.2s ease;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 20px;
+    border-radius: var(--radius-xl);
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
   }
   
   .habit:hover {
-    transform: scale(1.02);
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.075);
+    border-color: rgba(255, 255, 255, 0.12);
   }
   
-  /* Habit name */
-  .habit span:first-child {
+  .habit-left {
+    min-width: 0;
+    flex: 1;
+  }
+  
+  .habit-name {
+    margin-bottom: 6px;
     font-size: 1.2rem;
     font-weight: 600;
-    max-width: 60%;
-    line-height: 1.4;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--text);
   }
   
-  /* Streak counter */
-  .streak {
-    font-weight: 700;
-    color: #4CAF50;
-    margin-right: 15px;
-    font-size: 1.1rem;
+  .habit-identity {
+    font-size: 0.92rem;
+    line-height: 1.35;
+    color: var(--muted);
   }
   
-  /* Log button - bigger CTA */
-  .habit button {
-    background-color: #4CAF50;
-    border: none;
-    padding: 12px 22px;
-    border-radius: 8px;
-    color: #ffffff;
-    font-size: 1.1rem;
+  .habit-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  
+  .streak-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 78px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: var(--pill-bg);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 0.9rem;
     font-weight: 600;
+    color: var(--text);
+  }
+  
+  .habit button {
+    border: none;
+    border-radius: 999px;
+    background: var(--button-bg);
+    color: var(--text);
+    padding: 12px 18px;
+    min-width: 82px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     cursor: pointer;
     transition: background 0.2s ease, transform 0.2s ease;
   }
   
   .habit button:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
+    background: var(--button-bg-hover);
+    transform: scale(1.02);
   }
   
-  /* Weekly review button */
   #weekly-review {
-    margin-top: 40px;
-    padding: 15px 35px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-radius: 10px;
+    margin-top: 26px;
     border: none;
-    background-color: #2196F3;
-    color: #ffffff;
+    border-radius: 999px;
+    background: #f5f5f7;
+    color: #111216;
+    padding: 14px 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
     cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    align-self: flex-start;
   }
   
   #weekly-review:hover {
-    background-color: #1976d2;
-    transform: scale(1.05);
+    transform: translateY(-1px);
+    opacity: 0.95;
   }
   
-  /* Center weekly review and habit container */
-  #habits-container, #weekly-review {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  @media (max-width: 640px) {
+    body {
+      padding: 28px 16px 40px;
+    }
   
-  /* Mobile responsiveness */
-  @media (max-width: 480px) {
     h1 {
-      font-size: 2rem;
+      margin-bottom: 20px;
     }
   
-    .habit span:first-child {
-      font-size: 1rem;
+    .habit {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 18px;
     }
   
-    .habit button, #weekly-review {
-      font-size: 1rem;
-      padding: 10px 18px;
+    .habit-right {
+      width: 100%;
+      justify-content: space-between;
+    }
+  
+    .streak-pill {
+      min-width: auto;
+    }
+  
+    .habit button {
+      min-width: 76px;
     }
   }
+  
