@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Habit Tracker PWA</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Systems</title>
+  <meta name="theme-color" content="#111216" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Habit Tracker</h1>
-  <div id="habits-container">
-    <!-- Habits will be injected here by app.js -->
-  </div>
-  <button id="weekly-review">Weekly Review</button>
+  <main class="app-shell">
+    <header class="hero">
+      <p class="eyebrow">Atomic Habits</p>
+      <h1>Daily Systems</h1>
+      <p class="hero-subtitle">
+        Small actions. Repeated daily. Identity first.
+      </p>
+    </header>
+
+    <section class="toolbar">
+      <button id="weekly-review" class="primary-button">7-Day Review</button>
+    </section>
+
+    <section id="habits-container" class="habits-grid"></section>
+  </main>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
 
   <script src="app.js"></script>
 </body>
 </html>
+
